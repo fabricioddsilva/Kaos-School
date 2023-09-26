@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="/css/materialize.min.css"  media="screen,projection"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
+    <title>Kaos School</title>
+</head>
+<body>
+<header>
+    <div>
+        <nav>
+            <div class="nav-wrapper deep-purple darken-2">
+                <ul id="nav-mobile" class="left hide-on-med-and-down container">
+                    <li><a href="/admin/lista" class="btn waves-effect waves-dark red"><i class="material-icons">arrow_back</i></a></li>
+                    <li><a href="/aluno/cadastro">Novo Aluno</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</header><br>
+<div class="container">
+    <div class="row">
+        <table clas="highlight">
+            <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Idade</th>
+                <th>Turma</th>
+                <th>Turno</th>
+            </tr>
+            </thead>
+
+            <tbody >
+            <tr th:each="aluno : ${lista}">
+                <td th:text="${aluno.nome}"></td>
+                <td th:text="${aluno.idade}"></td>
+                <td th:text="${aluno.turma}"></td>
+                <td th:text="${aluno.turno}"></td>
+                <td><a th:href="@{/aluno/editar/{id}(id=${aluno.id})}" class="btn waves-effect waves-light blue"><i class="material-icons">create</i></a></td>
+                <td><a th:href="@{/aluno/apagar/{id}(id=${aluno.id})}" class="btn waves-effect waves-light red"><i class="material-icons">delete</i></a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script type="text/javascript" src="/js/materialize.min.js"></script>
+<script type="text/javascript" src="/js/app.js">
+</script>
+</body>
+</html>

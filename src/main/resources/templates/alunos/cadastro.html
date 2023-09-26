@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="/css/materialize.min.css"  media="screen,projection"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <title>Kaos School</title>
+</head>
+<body>
+
+<div class="row" th:if="${dados == null}">
+  <form class="col s12 m4 offset-m4" action="/aluno/cadastrar" method="post">
+    <div class="card">
+      <div class="card-action deep-purple darken-2 white-next">
+        <h3 class="center">Cadastro</h3>
+      </div>
+      <div class="card-content">
+        <div class="form-field">
+          <label for="alunoNome">Nome</label>
+          <input type="text" name="nome" id="alunoNome">
+        </div>
+
+        <div>
+          <label for="alunoIdade">Idade</label>
+          <input type="text" name="idade" id="alunoIdade">
+        </div>
+
+        <div class="row">
+          <div class="col s6">
+            <select name="turma">
+              <option value="" disabled selected>Turmas</option>
+              <option value="1" class="deep-purple-text text-darken-2">Turma 1</option>
+              <option value="2" class="deep-purple-text text-darken-2">Turma 2</option>
+              <option value="3" class="deep-purple-text text-darken-2">Turma 3</option>
+            </select>
+          </div>
+          <div class="col s6">
+            <select name="turno">
+              <option value="" disabled selected>Turnos</option>
+              <option value="Manhã" class="deep-purple-text text-darken-2">Manhã</option>
+              <option value="Tarde" class="deep-purple-text text-darken-2">Tarde</option>
+              <option value="Noite" class="deep-purple-text text-darken-2">Noite</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <button class="btn-large waves-effect waves-dark deep-purple darken-2" style="width:100%;" type="submit">Adicionar Aluno</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="row" th:if="${dados != null}">
+  <form class="col s12 m4 offset-m4" th:object="${dados}" method="post" action="/aluno/editar">
+
+    <div class="card">
+      <div class="card-action deep-purple darken-2 white-next">
+        <h3 class="center">Cadastro</h3>
+      </div>
+      <div class="card-content">
+        <div>
+          <input type="hidden" name="id" th:field="*{id}" readonly>
+        </div>
+
+        <div class="form-field">
+          <label for="alunoName">Usuário</label>
+          <input type="text" name="nome" id="alunoName" th:field="*{nome}">
+        </div><br>
+
+        <div class="form-field">
+          <label for="alunoAge">Senha</label>
+          <input type="text" name="idade" id="alunoAge" th:field="*{idade}">
+        </div><br><br>
+
+        <div class="row">
+          <div class="col s6">
+            <select name="turma">
+              <option value="" disabled selected>Turmas</option>
+              <option value="1" class="deep-purple-text text-darken-2">Turma 1</option>
+              <option value="2" class="deep-purple-text text-darken-2">Turma 2</option>
+              <option value="3" class="deep-purple-text text-darken-2">Turma 3</option>
+            </select>
+          </div>
+          <div class="col s6">
+            <select name="turno">
+              <option value="" disabled selected>Turnos</option>
+              <option value="Manhã" class="deep-purple-text text-darken-2">Manhã</option>
+              <option value="Tarde" class="deep-purple-text text-darken-2">Tarde</option>
+              <option value="Noite" class="deep-purple-text text-darken-2">Noite</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <button class="btn-large waves-effect waves-dark deep-purple darken-2" style="width:100%;">Editar Conta</button>
+        </div>
+
+      </div>
+    </div>
+  </form>
+</div>
+
+<script type="text/javascript" src="/js/app.js"></script>
+<script type="text/javascript" src="/js/materialize.min.js"></script>
+</body>
+</html>

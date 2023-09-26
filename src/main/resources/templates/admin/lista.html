@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="/css/materialize.min.css"  media="screen,projection"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <title>Kaos School</title>
+</head>
+<body>
+  <header>
+  <div>
+    <nav>
+      <div class="nav-wrapper deep-purple darken-2">
+
+        <ul class="dropdown-content" id="admin">
+          <li><a th:href="@{/admin/editar/{id}(id=${admin.id})}" class="deep-purple-text text-darken-2">Editar</a></li>
+          <li><a th:href="@{/admin/excluir/{id}(id=${admin.id})}" class="deep-purple-text text-darken-2">Excluir</a></li>
+        </ul>
+
+        <ul class="dropdown-content" id="aluno">
+          <li><a href="/aluno/cadastro" class="deep-purple-text text-darken-2">Novo Aluno</a></li>
+          <li><a href="/alunos" class="deep-purple-text text-darken-2">Lista de Alunos</a></li>
+        </ul>
+
+
+        <a href="" class="brand-logo center" th:text="${'Bem Vindo!! ' + admin.nome}"></a>
+        <ul id="nav-mobile" class="left hide-on-med-and-down container">
+          <li><a href="/deslogar"><button class="btn waves-effect waves-dark red">Deslogar</button></a></li>
+          <li><a data-target="admin" class="dropdown-trigger" href="#">Conta</a></li>
+          <li><a data-target="aluno" class="dropdown-trigger" href="#">Aluno</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  </header><br>
+  <div class="container">
+      <div class="row">
+        <table clas="highlight">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Matrícula</th>
+            </tr>
+          </thead>
+
+          <tbody >
+            <tr th:each="adm : ${lista}">
+              <td th:text="${adm.id}"></td>
+              <td th:text="${adm.nome}"></td>
+              <td th:text="${adm.matricula}"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+  <script type="text/javascript" src="/js/materialize.min.js"></script>
+  <script type="text/javascript" src="/js/app.js"></script>
+</body>
+</html>
