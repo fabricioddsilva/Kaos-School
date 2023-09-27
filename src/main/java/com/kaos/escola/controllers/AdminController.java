@@ -95,7 +95,8 @@ public class AdminController {
     }
 
     @GetMapping("admin/excluir/{id}")
-    public String excluirAdmin(@PathVariable("id") Long id){
+    public String excluirAdmin(@PathVariable("id") Long id, HttpSession session){
+        session.invalidate();
         adminRepo.deleteById(id);
         return "redirect:/";
     }
