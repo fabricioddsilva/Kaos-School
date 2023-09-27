@@ -78,17 +78,17 @@ public class AdminController {
     }
 
     @PostMapping("admin/editar")
-    public String atualizarAlunos(Administradores dados, RedirectAttributes redirectAttributes, Model model, HttpSession session){
-        Optional<Administradores> adminIsTrue = adminRepo.findById(dados.getId());
+    public String atualizarAlunos(Administradores dados, Model model, HttpSession session){
+        Optional<Administradores> conta = adminRepo.findById(dados.getId());
 
-        if(adminIsTrue.isPresent()){
-            Administradores admin = adminIsTrue.get();
+        if(conta != null){
+            Administradores admin = conta.get();
             admin.setNome(dados.getNome());
             admin.setSenha(dados.getSenha());
             adminRepo.save(dados);
             return "redirect:/";
         }else{
-            redirectAttributes.addAttribute("erro!", "Alguma informação está incorreta!");
+            model.addAttribute("erro!", "Alguma informação está incorreta!");
             return "redirect:/admin";
         }
 
