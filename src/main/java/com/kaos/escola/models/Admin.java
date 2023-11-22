@@ -6,29 +6,24 @@ import org.antlr.v4.runtime.misc.NotNull;
 
 @Data
 @Entity
-@Table(name="tb_alunos")
-public class Alunos {
+@Table (name = "tb_admin")
+public class Admin {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(nullable = false)
-    private Long id;
+    private long id;
 
     @NotNull
-    @Column(nullable = false)
+    @Column(length = 30,nullable = false)
     private String nome;
 
     @NotNull
     @Column(nullable = false)
-    private int idade;
+    private String senha;
 
     @NotNull
-    @Column(nullable = false)
-    private String turma;
-
-    @NotNull
-    @Column(nullable = false)
-    private String turno;
+    @Column(length = 10, nullable = false)
+    private String matricula;
 
 
 
